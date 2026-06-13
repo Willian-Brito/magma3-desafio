@@ -1,0 +1,3882 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "MAGMA3 - API",
+    "description": "Current API version.",
+    "version": "v2"
+  },
+  "paths": {
+    "/v2/Auth/Login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Enter the company name, login and password that were entered.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "LoginRequest",
+                "required": [
+                  "Enterprise",
+                  "Login",
+                  "Password"
+                ],
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Servidor.Aplicacao.Integracao.Requests.Autenticacao.LoginRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Alaska/GetActionClipboardByDateCreation": {
+      "get": {
+        "tags": [
+          "Alaska"
+        ],
+        "description": "This endpoint returns the alaska action clipboard. The `dateCreation` given in the format `YYYY-MM-DD HH:MM:SS.MS`.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "Filtered for person user id.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "computerId",
+            "in": "query",
+            "description": "Filtered for computer user id.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateCreation",
+            "in": "query",
+            "description": "Date creation action: date creation format 'AAAA-MM-DD HH:MM:SS.MS'. Example: '2022-10-11 00:00:00.000'",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionClipboardResponse"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Alaska/GetActionFileByDateCreation": {
+      "get": {
+        "tags": [
+          "Alaska"
+        ],
+        "description": "This endpoint returns the alaska action file. The `dateCreation` given in the format `YYYY-MM-DD HH:MM:SS.MS`.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "Filtered for person user id.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "computerId",
+            "in": "query",
+            "description": "Filtered for computer user id.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateCreation",
+            "in": "query",
+            "description": "Date creation action: date creation format 'AAAA-MM-DD HH:MM:SS.MS'. Example: '2022-10-11 00:00:00.000'",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionFileResponse"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Alaska/GetActionProcessByDateCreation": {
+      "get": {
+        "tags": [
+          "Alaska"
+        ],
+        "description": "This endpoint returns the alaska action process. The `dateCreation` given in the format `YYYY-MM-DD HH:MM:SS.MS`.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "Filtered for person user id.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "computerId",
+            "in": "query",
+            "description": "Filtered for computer user id.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateCreation",
+            "in": "query",
+            "description": "Date creation action: date creation format 'AAAA-MM-DD HH:MM:SS.MS'. Example: '2022-10-11 00:00:00.000'",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionProcessResponse"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Alaska/GetActionSiteByDateCreation": {
+      "get": {
+        "tags": [
+          "Alaska"
+        ],
+        "description": "This endpoint returns the alaska action site. The `dateCreation` given in the format `YYYY-MM-DD HH:MM:SS.MS`.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "Filtered for person user id.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "computerId",
+            "in": "query",
+            "description": "Filtered for computer user id.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateCreation",
+            "in": "query",
+            "description": "Date creation action: date creation format 'AAAA-MM-DD HH:MM:SS.MS'. Example: '2022-10-11 00:00:00.000'",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionSiteResponse"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Bluesky/GetActivesWindowsByDateCreation": {
+      "get": {
+        "tags": [
+          "Bluesky"
+        ],
+        "description": "This endpoint returns the active windows.",
+        "parameters": [
+          {
+            "name": "dateCreation",
+            "in": "query",
+            "description": "Active window date creation format 'AAAA-MM-DD HH:MM:SS.MS'. Example: '2022-10-11 00:00:00.000'.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "login",
+            "in": "query",
+            "description": "If you want to filter by a specific user's login, it can be empty if you don't want filtering.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.BlueskyControlador.v2.GetActiveWindowsByDateCreationResponse.ActiveWindow"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Bluesky/GetAnalyzeNonComplianceByDateCreation": {
+      "get": {
+        "tags": [
+          "Bluesky"
+        ],
+        "description": "This endpoint returns the noncompliances. The `date_creation` given in the format `YYYY-MM-DD HH:MM:SS.MS`.",
+        "parameters": [
+          {
+            "name": "dateCreation",
+            "in": "query",
+            "description": "No compliance date creation format 'AAAA-MM-DD HH:MM:SS.MS'. Example: '2022-10-11 00:00:00.000'.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.BlueskyControlador.v2.GetAnalyzeNonComplianceByDateCreationResponse.NoCompliance"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Bluesky/GetPrintsByDateCreation": {
+      "get": {
+        "tags": [
+          "Bluesky"
+        ],
+        "description": "This endpoint returns the prints and your attributes. Example: Person.UserId, Person.UserName, DocumentName",
+        "parameters": [
+          {
+            "name": "dateCreation",
+            "in": "query",
+            "description": "Print date creation format 'AAAA-MM-DD HH:MM:SS.MS'. Example: '2022-10-11 00:00:00.000'.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.BlueskyControlador.v2.GetPrintsByDateCreationResponse.Print"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Bluesky/GetUsers": {
+      "get": {
+        "tags": [
+          "Bluesky"
+        ],
+        "description": "This endpoint returns the person users.",
+        "parameters": [
+          {
+            "name": "pagination",
+            "in": "query",
+            "description": "Requested page number.",
+            "schema": {
+              "title": "String",
+              "type": "string",
+              "default": "0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.BlueskyControlador.v2.GetUsersResponse.User"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Force1/GetAnalyzeNonComplianceByDateCreation": {
+      "get": {
+        "tags": [
+          "Force1"
+        ],
+        "description": "This endpoint returns the noncompliances. The `dateCreation` given in the format `YYYY-MM-DD HH:MM:SS.MS`.",
+        "parameters": [
+          {
+            "name": "dateCreation",
+            "in": "query",
+            "description": "No compliance date creation format 'AAAA-MM-DD HH:MM:SS.MS'. Example: '2022-10-11 00:00:00.000'",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAnalyzeNonComplianceByDateCreationResponse.NoCompliance"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Force1/GetAssets": {
+      "get": {
+        "tags": [
+          "Force1"
+        ],
+        "description": "This endpoint returns the assets and your attributes. Example: Softwares, Printers, RamMemory",
+        "parameters": [
+          {
+            "name": "assetType",
+            "in": "query",
+            "description": "Filtered active type name. Example: computador, monitor, switch",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "description": "Requested page number.",
+            "schema": {
+              "title": "String",
+              "type": "string",
+              "default": "0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Force1/GetCertificates": {
+      "get": {
+        "tags": [
+          "Force1"
+        ],
+        "description": "This endpoint returns the certificates and your attributes. Example: AssetId, AssetName, Sender",
+        "parameters": [
+          {
+            "name": "pagination",
+            "in": "query",
+            "description": "Requested page number.",
+            "schema": {
+              "title": "String",
+              "type": "string",
+              "default": "0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetCertificatesResponse.Certificado"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Force1/GetGeolocationsByDateCreation": {
+      "get": {
+        "tags": [
+          "Force1"
+        ],
+        "description": "This endpoint returns the geolocations associated with a specific `assetId` in a `dateCreation` given in the format `YYYY-MM-DD HH:MM:SS.MS`.",
+        "parameters": [
+          {
+            "name": "dateCreation",
+            "in": "query",
+            "description": "Geolocation date creation format 'AAAA-MM-DD HH:MM:SS.MS'. Example: '2022-10-11 00:00:00.000'",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "assetId",
+            "in": "query",
+            "description": "Unique id from asset.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetGeolocationsByDateCreationResponse.Geolocation"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Force1/GetServices": {
+      "get": {
+        "tags": [
+          "Force1"
+        ],
+        "description": "This endpoint returns the services and your attributes. Example: AssetId, AssetName, Name, Manufacturer",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "query",
+            "description": "Unique id from asset.",
+            "required": true,
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetServicesResponse.Service"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Force1/GetSoftwares": {
+      "get": {
+        "tags": [
+          "Force1"
+        ],
+        "description": "This endpoint returns the softwares and your attributes. Example: AssetId, AssetName, Name, Manufacturer",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "query",
+            "description": "Unique id from asset.",
+            "required": true,
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetSoftwaresResponse.Software"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Iam/RemoveProfile": {
+      "delete": {
+        "tags": [
+          "Iam"
+        ],
+        "description": "This endpoint remove iam profile",
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "query",
+            "description": "Id of the iam profile you want to delete.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Iam/RemoveUser": {
+      "delete": {
+        "tags": [
+          "Iam"
+        ],
+        "description": "This endpoint remove iam user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "Id of the iam user you want to delete, it can be empty if you only want to enter one of the three available parameters.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "userLogin",
+            "in": "query",
+            "description": "Login of the iam user you want to delete, it can be empty if you only want to enter one of the three available parameters.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "userEmail",
+            "in": "query",
+            "description": "Email of the iam user you want to delete, it can be empty if you only want to enter one of the three available parameters.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Iam/GetProfiles": {
+      "get": {
+        "tags": [
+          "Iam"
+        ],
+        "description": "This endpoint returns the profiles and your attributes. Example: Name, Permissions",
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Perfil.Perfil"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Iam/GetUser": {
+      "get": {
+        "tags": [
+          "Iam"
+        ],
+        "description": "This endpoint returns the user. Example: Login, Name, Email",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "Id of the iam user you want to delete, it can be empty if you only want to enter one of the three available parameters.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "userLogin",
+            "in": "query",
+            "description": "Login of the iam user you want to delete, it can be empty if you only want to enter one of the three available parameters.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          {
+            "name": "userEmail",
+            "in": "query",
+            "description": "Email of the iam user you want to delete, it can be empty if you only want to enter one of the three available parameters.",
+            "schema": {
+              "title": "String",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Usuario"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Iam/GetUsers": {
+      "get": {
+        "tags": [
+          "Iam"
+        ],
+        "description": "This endpoint returns the users and your attributes. Example: Login, Name, Email",
+        "responses": {
+          "200": {
+            "description": "Returns a maximum of 100 objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "List`1",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Usuario"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Iam/InsertProfile": {
+      "post": {
+        "tags": [
+          "Iam"
+        ],
+        "description": "This endpoint receive iam profile entity and insert",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "InsertProfileRequest",
+                "required": [
+                  "Name"
+                ],
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.InsertProfileRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Perfil.Perfil"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Iam/InsertUser": {
+      "post": {
+        "tags": [
+          "Iam"
+        ],
+        "description": "This endpoint receive user entity and insert",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "InsertUserRequest",
+                "required": [
+                  "Login",
+                  "Password",
+                  "Email",
+                  "ProfileIds"
+                ],
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.InsertUserRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.InsertUserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Iam/UpdateProfile": {
+      "put": {
+        "tags": [
+          "Iam"
+        ],
+        "description": "This endpoint receive iam profile entity and update",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "UpdateProfileRequest",
+                "required": [
+                  "Name"
+                ],
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.UpdateProfileRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Perfil.Perfil"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    },
+    "/v2/Iam/UpdateUser": {
+      "put": {
+        "tags": [
+          "Iam"
+        ],
+        "description": "This endpoint receive user entity and update",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "UpdateUserRequest",
+                "required": [
+                  "Login",
+                  "Email",
+                  "ProfileIds"
+                ],
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.UpdateUserRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Access denied. Check if you are logged in or if your credentials are correct"
+          },
+          "404": {
+            "description": "The url does not exist. Check if it is in the correct pattern."
+          },
+          "422": {
+            "description": "A validation error occurred. Check the parameters of your request."
+          },
+          "429": {
+            "description": "Quota exceeded. Maximum allowed 100 per 30 seconds. Please try again in 30 seconds."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Servidor.Aplicacao.Integracao.Requests.Autenticacao.LoginRequest": {
+        "title": "LoginRequest",
+        "required": [
+          "Enterprise",
+          "login",
+          "Login",
+          "nomeReduzidoEmpresa",
+          "Password",
+          "senha"
+        ],
+        "type": "object",
+        "properties": {
+          "Enterprise": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Login": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Password": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionClipboardResponse": {
+        "title": "GetActionClipboardResponse",
+        "type": "object",
+        "properties": {
+          "ActionsClipboards": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionClipboardResponse.ActionClipboard"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionClipboardResponse.ActionClipboard": {
+        "title": "ActionClipboard",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DateCreation": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "FileContentType": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Process.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Computer.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "User.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "User.Login": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionFileResponse": {
+        "title": "GetActionFileResponse",
+        "type": "object",
+        "properties": {
+          "ActionFiles": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionFileResponse.ActionFile"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionFileResponse.ActionFile": {
+        "title": "ActionFile",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DateCreation": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "ActionType": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "FilePath": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "FileContentType": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Process.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Computer.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "User.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "User.Login": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionProcessResponse": {
+        "title": "GetActionProcessResponse",
+        "type": "object",
+        "properties": {
+          "ActionProcesses": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionProcessResponse.ActionProcess"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionProcessResponse.ActionProcess": {
+        "title": "ActionProcess",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DateCreation": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "ActionType": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "File.Process.Path": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Process.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Computer.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "User.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "User.Login": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionSiteResponse": {
+        "title": "GetActionSiteResponse",
+        "type": "object",
+        "properties": {
+          "ActionSites": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionSiteResponse.ActionSite"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.AlaskaControaldor.v2.GetActionSiteResponse.ActionSite": {
+        "title": "ActionSite",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DateCreation": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "Site.Address": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Site.Category": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Computer.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "User.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "User.Login": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.BlueskyControlador.v2.GetActiveWindowsByDateCreationResponse.ActiveWindow": {
+        "title": "ActiveWindow",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DateCreation": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "Title": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "FocusStartDate": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "FocusEndDate": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "ProcessName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ProcessCategory": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Url": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "UrlCategory": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Pid": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "TypeUsage": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Computer.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Person.UserId": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Person.UserName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Person.UserLogin": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Person.AdministrativeUnity.Hierarchy": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.BlueskyControlador.v2.GetAnalyzeNonComplianceByDateCreationResponse.NoCompliance": {
+        "title": "NoCompliance",
+        "type": "object",
+        "properties": {
+          "DateCreation": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "Order": {
+            "title": "Int32",
+            "type": "integer",
+            "format": "int32"
+          },
+          "Person.UserId": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Person.UserName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Person.AdministrativeUnity.Hierarchy": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "PolicyName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Field1": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field2": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field3": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field4": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field5": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field6": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field7": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field8": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field9": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field10": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field11": {
+            "title": "Object",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.BlueskyControlador.v2.GetPrintsByDateCreationResponse.Print": {
+        "title": "Print",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DateCreation": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "PrinterName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DocumentName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "TotalPages": {
+            "title": "Int32",
+            "type": "integer",
+            "format": "int32"
+          },
+          "ColorPrinting": {
+            "title": "Nullable`1",
+            "type": "boolean",
+            "nullable": true
+          },
+          "FrontBack": {
+            "title": "Nullable`1",
+            "type": "boolean",
+            "nullable": true
+          },
+          "PaperSize": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DatePrintSent": {
+            "title": "DateTime",
+            "type": "string",
+            "format": "date-time"
+          },
+          "PrinterDriverName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ProcessorName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "FileSize": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Person.UserId": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Person.UserName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Person.UserLogin": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Person.AdministrativeUnity.Hierarchy": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.BlueskyControlador.v2.GetUsersResponse.User": {
+        "title": "User",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Login": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DateCreation": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "DateModified": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "HelperId": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Compliance": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "AssociateAssets.Names": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Person.AdministrativeUnity.Hierarchy": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.UserEnabled": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "ActiveDirectory.UserDescription": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.User.Departament": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.UserPosition": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.UserOffice": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.UsuarioCompany": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.User.Email": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.UserPhone": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.UserCity": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.UserState": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.User.DistinguishedName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAnalyzeNonComplianceByDateCreationResponse.NoCompliance": {
+        "title": "NoCompliance",
+        "type": "object",
+        "properties": {
+          "DateCreation": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "Order": {
+            "title": "Int32",
+            "type": "integer",
+            "format": "int32"
+          },
+          "AssetId": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "AssetName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Asset.AdministrativeUnity.Hierarchy": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "PolicyName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Field1": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field2": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field3": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field4": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field5": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field6": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field7": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field8": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field9": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field10": {
+            "title": "Object",
+            "nullable": true
+          },
+          "Field11": {
+            "title": "Object",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo": {
+        "title": "Asset",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Compliance": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Type": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Subtype": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "HelperId": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "HeritageAsset": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "SerialNumber": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Model": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Width": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Height": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Inch": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Weight": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "RateDepreciation": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "AcquisitionDate": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "Real.ResidualValue": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Dolar.ResidualValue": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "RealValue": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "DolarValue": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "ManufacturingDate": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "ValidityDate": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "Maintenances": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Maintenance"
+            },
+            "nullable": true
+          },
+          "AssociateAssets": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Observations": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Tag": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Motherboard.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Motherboard.Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Motherboard.PartNumber": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Motherboard.Model": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Motherboard.Version": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.BitsArchitecture": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.LastLoggedUser": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.Domain": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.ActivationKey": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.RamMemoryRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "OperatingSystem.MemoryRam": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.RegisteredUser": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.Enterprise": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.Serial": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.ServicePack": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "OperatingSystem.Version": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Processor.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Processor.Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Processor.BitsArchitecture": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Processor.PhisycalCores": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Processor.LogicalCores": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Processor.L2Cache": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Processor.L2CacheRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Processor.L3Cache": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Processor.L3CacheRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Processor.Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Processor.MaxFrequency": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Processor.MaxFrequencyRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Processor.Socket": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Bios.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Bios.Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Bios.Version": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Bios.Build": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Bios.Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Bios.Serial": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Bios.SmbiosVersion": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "SimCard.Imei1": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "SimCard.Imei2": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Agent.DataLastCommunication": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "Agent.Version": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Agent.Installed": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Agent.InstalledRaw": {
+            "title": "Nullable`1",
+            "type": "boolean",
+            "nullable": true
+          },
+          "AdministrativeUnit.Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "AdministrativeUnit.Acronym": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "AdministrativeUnit.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "AdministrativeUnit.Hierarchy": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.Gateway": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.DHCPServer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.DomainSuffixDNS": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.SearchDNSOrder": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.Ip": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.MACAddress": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.Mask": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.PrimaryWINS": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.SecondaryWINS": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.PartNumber": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveNetworkCard.Version": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Network.PublicIp": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.Computer.Enabled": {
+            "title": "Nullable`1",
+            "type": "boolean",
+            "nullable": true
+          },
+          "ActiveDirectory.Computer.Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActiveDirectory.Computer.DistinguishedName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Partitions": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Partition"
+            },
+            "nullable": true
+          },
+          "InitializedPrograms": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.InitializedPrograms"
+            },
+            "nullable": true
+          },
+          "LogicalStorages": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.LogicalStorage"
+            },
+            "nullable": true
+          },
+          "Sharings": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Sharing"
+            },
+            "nullable": true
+          },
+          "Users": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.User"
+            },
+            "nullable": true
+          },
+          "UsersProfiles": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.ProfileUser"
+            },
+            "nullable": true
+          },
+          "RamMemorys": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.RamMemory"
+            },
+            "nullable": true
+          },
+          "GraphicCards": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.GraphicCard"
+            },
+            "nullable": true
+          },
+          "SoundCards": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.SoundCard"
+            },
+            "nullable": true
+          },
+          "Mouses": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Mouse"
+            },
+            "nullable": true
+          },
+          "Keyboards": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Keyboard"
+            },
+            "nullable": true
+          },
+          "CdsRom": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.CdRom"
+            },
+            "nullable": true
+          },
+          "NetworkCards": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.NetworkCard"
+            },
+            "nullable": true
+          },
+          "Storages": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Storage"
+            },
+            "nullable": true
+          },
+          "Printers": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Printer"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.CdRom": {
+        "title": "CdRom",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Identification": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "MediaType": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Drive": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.GraphicCard": {
+        "title": "GraphicCard",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "UpdateFee": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "UpdateFeeRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ProcessorName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Memory": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "MemoryRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.InitializedPrograms": {
+        "title": "InitializedPrograms",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Address": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Keyboard": {
+        "title": "Keyboard",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.LogicalStorage": {
+        "title": "LogicalStorage",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "FileSystem": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "FreeSpace": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "FreeSpaceRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "MediaType": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Serial": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Capacity": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "CapacityRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "VolumeDirty": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Maintenance": {
+        "title": "Maintenance",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "TicketId": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "MaintenanceDate": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "AssetName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "PeriodicityDays": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Type": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Responsible": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Status": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Value": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Observations": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Mouse": {
+        "title": "Mouse",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.NetworkCard": {
+        "title": "NetworkCard",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Gateway": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DHCPServer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DNSDomainSuffix": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DNSSearchOrder": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Ip": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "MACAddress": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "SubnetMask": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "PrimaryWINS": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "SecondaryWINS": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "PartNumber": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Version": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Partition": {
+        "title": "Partition",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "CapacityRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Capacity": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Printer": {
+        "title": "Printer",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "SharedName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Shared": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "PortName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DriverName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Network": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "Local": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "OfflinePrintingAllow": {
+            "title": "Boolean",
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.ProfileUser": {
+        "title": "ProfileUser",
+        "type": "object",
+        "properties": {
+          "Address": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Roaming": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "RoamingAddress": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Sid": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "State": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Special": {
+            "title": "Boolean",
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.RamMemory": {
+        "title": "RamMemory",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Capacity": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "CapacityRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Frequency": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "FrequencyRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Location": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "FormFactor": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Serial": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "PartNumber": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Type": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Sharing": {
+        "title": "Sharing",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Address": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "CompetitorUsers": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "AllowMaximumUsersCompetitors": {
+            "title": "Nullable`1",
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.SoundCard": {
+        "title": "SoundCard",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.Storage": {
+        "title": "Storage",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Type": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Cylinders": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Heads": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Sectors": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Trails": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Model": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Signature": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Partitions": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "PnpDeviceId": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Serial": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Capacity": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "CapacityRaw": {
+            "title": "Nullable`1",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetAssetsResponse.Ativo.User": {
+        "title": "User",
+        "type": "object",
+        "properties": {
+          "Login": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "FullName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "AccountType": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "DisabledAccount": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "Domain": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Sid": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "SidType": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "PasswordExpires": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "LocalAccount": {
+            "title": "Boolean",
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetCertificatesResponse.Certificado": {
+        "title": "Certificate",
+        "type": "object",
+        "properties": {
+          "Asset.Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Asset.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Sender": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "IssuedTo": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ValidDateStart": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "ValidDateEnd": {
+            "title": "Nullable`1",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "FingerPrint": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "SerialNumber": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "RepositoryName": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "RepositoryUsage": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetGeolocationsByDateCreationResponse.Geolocation": {
+        "title": "Geolocation",
+        "type": "object",
+        "properties": {
+          "Date": {
+            "title": "DateTime",
+            "type": "string",
+            "format": "date-time"
+          },
+          "DateCreation": {
+            "title": "DateTime",
+            "type": "string",
+            "format": "date-time"
+          },
+          "Asset.Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Asset.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "LastLoggedUser": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Longitude": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Latitude": {
+            "title": "Nullable`1",
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Country": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "State": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "City": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ZipCode": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Street": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Neighborhood": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Number": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetServicesResponse.Service": {
+        "title": "Service",
+        "type": "object",
+        "properties": {
+          "Asset.Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Asset.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Display.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ProccessId": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "StartupType": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Login": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "State": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ExitCode": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ExecutableAddress": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "AccountExecution": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.Force1Controlador.v2.GetSoftwaresResponse.Software": {
+        "title": "Software",
+        "type": "object",
+        "properties": {
+          "Asset.Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Asset.Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Version": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActivationKey": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "IdentificationNumber": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "PackageAddress": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "PackageCode": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Manufacturer": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.IamControlador.v2.InsertProfileRequest": {
+        "title": "InsertProfileRequest",
+        "required": [
+          "Name",
+          "nome"
+        ],
+        "type": "object",
+        "properties": {
+          "nomeReduzidoEmpresa": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Permissions": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Perfil.Permissao"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.IamControlador.v2.InsertUserRequest": {
+        "title": "InsertUserRequest",
+        "required": [
+          "email",
+          "Email",
+          "idsPerfis",
+          "login",
+          "Login",
+          "Password",
+          "ProfileIds",
+          "senha"
+        ],
+        "type": "object",
+        "properties": {
+          "nomeReduzidoEmpresa": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Enabled": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "Login": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Password": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Nome": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Cellphone": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Mfa": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "BlockSimultaneousLogin": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "Language": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ProfileIds": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          "ProfileNames": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.IamControlador.v2.InsertUserResponse": {
+        "title": "InsertUserResponse",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.IamControlador.v2.UpdateProfileRequest": {
+        "title": "UpdateProfileRequest",
+        "required": [
+          "Name",
+          "nome"
+        ],
+        "type": "object",
+        "properties": {
+          "nomeReduzidoEmpresa": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Permissions": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Perfil.Permissao"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.IamControlador.v2.UpdateUserRequest": {
+        "title": "UpdateUserRequest",
+        "required": [
+          "email",
+          "Email",
+          "idsPerfis",
+          "login",
+          "Login",
+          "ProfileIds"
+        ],
+        "type": "object",
+        "properties": {
+          "nomeReduzidoEmpresa": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Enabled": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "Login": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Password": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Nome": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Cellphone": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Mfa": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "BlockSimultaneousLogin": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "Language": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ProfileIds": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          "ProfileNames": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Perfil.Perfil": {
+        "title": "Profile",
+        "required": [
+          "Name",
+          "nome"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Description": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Permissions": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Perfil.Permissao"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Perfil.Permissao": {
+        "title": "Permission",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "Int32",
+            "type": "integer",
+            "format": "int32"
+          },
+          "Permission": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ActivePermission": {
+            "title": "Boolean",
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebApi.Integracao.Handlers.IamControlador.v2.UsuarioContexto.Usuario": {
+        "title": "User",
+        "required": [
+          "email",
+          "Email",
+          "idsPerfis",
+          "login",
+          "Login",
+          "ProfileIds"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Enabled": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "Login": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Nome": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "title": "String",
+            "minLength": 1,
+            "type": "string"
+          },
+          "Cellphone": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "Mfa": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "BlockSimultaneousLogin": {
+            "title": "Boolean",
+            "type": "boolean"
+          },
+          "Language": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          },
+          "ProfileIds": {
+            "title": "List`1",
+            "type": "array",
+            "items": {
+              "title": "String",
+              "type": "string"
+            }
+          },
+          "ProfileNames": {
+            "title": "String",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
