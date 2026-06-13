@@ -78,15 +78,5 @@ GET /force1/ativos
 - Send Mail
 - Get Events
 
-#### Endpoints para teste
-
-```http
-GET /google/coordinates
-
-POST /docusign/envelope
-
-GET /graph/users
-```
-
 ## 📝 Swagger
 <img src="docs/img/swagger.png" />
